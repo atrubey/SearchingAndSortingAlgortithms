@@ -133,21 +133,22 @@ public class Algorithms {
 		result = new ArrayList<String>(result); 
 	
 		String temp;
-		int minIndex = 0; 
+		boolean swap = false; 
 		
-		for (int j = 0; j < result.size()-1; j++) {
-			minIndex = j; 
-			for (int i = j+1; i < result.size(); i++) {
-				if (result.get(i).length() < result.get(minIndex).length()) {
-					minIndex = i; 
+		do {
+			swap = false; 
+			for (int i = 0; i < result.size()-1; i++) {
+				if (result.get(i).compareTo(result.get(i+1)) > 0) {
+					temp = result.get(i); 
+					result.add(i, result.get(i+1));
+					result.remove(i+1); 
+					result.add(i+1, temp);
+					result.remove(i+2); 
+					swap = true; 
 				}
-				temp = result.get(minIndex); 
-				result.add(minIndex, result.get(j));
-				result.remove(minIndex+1); 
-				result.add(j, temp);
-				result.remove(j+1); 
 			}
-		}
+		} while (swap); 
+		
 		
 		return result; 
 		
