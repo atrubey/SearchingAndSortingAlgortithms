@@ -1,5 +1,6 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -67,11 +68,36 @@ public class Algorithms {
 		
 		boolean containsSOS = false; 
 		
-			if (message.contains("... --- ...")) {
+			if (message.contains(" ... --- ... ")) {
 				containsSOS = true; 
 			}	
 		
 		return containsSOS; 
+		
+	}
+	
+public static List<Double> sortScores(List<Double> result) {
+	
+		result = new ArrayList<Double>(result); 
+	
+		double temp;
+		boolean swap = false; 
+		
+		do {
+			swap = false; 
+			for (int i = 0; i < result.size()-1; i++) {
+				if (result.get(i) > result.get(i+1)) {
+					temp = result.get(i); 
+					result.add(i, result.get(i+1));
+					result.remove(i+1); 
+					result.add(i+1, temp);
+					result.remove(i+2); 
+					swap = true; 
+				}
+			}
+		} while (swap == true); 
+		
+		return result; 
 		
 	}
 	
