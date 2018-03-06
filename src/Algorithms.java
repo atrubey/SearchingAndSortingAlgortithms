@@ -76,7 +76,8 @@ public class Algorithms {
 		
 	}
 	
-public static List<Double> sortScores(List<Double> result) {
+	//bubble sort
+	public static List<Double> sortScores(List<Double> result) {
 	
 		result = new ArrayList<Double>(result); 
 	
@@ -96,6 +97,57 @@ public static List<Double> sortScores(List<Double> result) {
 				}
 			}
 		} while (swap == true); 
+		
+		return result; 
+		
+	}
+	
+	//selection sort
+	public static List<String> sortDNA(List<String> result) {
+		
+		result = new ArrayList<String>(result); 
+	
+		String temp;
+		int minIndex = 0; 
+		
+		for (int j = 0; j < result.size()-1; j++) {
+			minIndex = j; 
+			for (int i = j+1; i < result.size(); i++) {
+				if (result.get(i).length() < result.get(minIndex).length()) {
+					minIndex = i; 
+				}
+				temp = result.get(minIndex); 
+				result.add(minIndex, result.get(j));
+				result.remove(minIndex+1); 
+				result.add(j, temp);
+				result.remove(j+1); 
+			}
+		}
+		
+		return result; 
+		
+	}
+	
+	public static List<String> sortWords(List<String> result) {
+		
+		result = new ArrayList<String>(result); 
+	
+		String temp;
+		int minIndex = 0; 
+		
+		for (int j = 0; j < result.size()-1; j++) {
+			minIndex = j; 
+			for (int i = j+1; i < result.size(); i++) {
+				if (result.get(i).length() < result.get(minIndex).length()) {
+					minIndex = i; 
+				}
+				temp = result.get(minIndex); 
+				result.add(minIndex, result.get(j));
+				result.remove(minIndex+1); 
+				result.add(j, temp);
+				result.remove(j+1); 
+			}
+		}
 		
 		return result; 
 		
